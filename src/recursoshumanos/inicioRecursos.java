@@ -1,6 +1,9 @@
 package recursoshumanos;
 
+import com.mysql.jdbc.Connection;
 import java.awt.*;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import javax.swing.*;
 import javax.swing.JOptionPane;
 
@@ -125,6 +128,16 @@ public class inicioRecursos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEntrarActionPerformed
+        try
+        {
+            /*
+                Creacion de la conexión a la base de datos
+                Es mi DiverManager.getConnection(urlBaseDeDatos,usuario,contraseña)
+            */
+            Connection con;
+            con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306","root","quetzal");
+        }catch(SQLException ex){}
+        
         String us=txtUsuario.getText(),pass=txtContra.getText();
         if(us.equals("Zaito") && pass.equals("quetzal"))
         {
