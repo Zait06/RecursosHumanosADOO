@@ -1,9 +1,11 @@
 package recursoshumanos;
 
 /**
- *
- * @author Zait
- */
+ * @author 
+ * Zait
+ * Luis
+ * Marcus
+ **/
 
 import java.awt.*;
 import javax.swing.*;
