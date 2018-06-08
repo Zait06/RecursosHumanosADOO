@@ -46,6 +46,8 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
         jfeNac = new com.toedter.calendar.JDateChooser();
         addBoton = new javax.swing.JButton();
         cancelBoton = new javax.swing.JButton();
+        radGeneral = new javax.swing.JRadioButton();
+        radRecur = new javax.swing.JRadioButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -114,6 +116,10 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
             }
         });
 
+        radGeneral.setText("General");
+
+        radRecur.setText("Recursos Humanos");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -139,11 +145,6 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
                                             .addComponent(jLabel5))
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addGap(10, 10, 10)
-                                                .addComponent(jRadioButton1)
-                                                .addGap(34, 34, 34)
-                                                .addComponent(jRadioButton2))
-                                            .addGroup(layout.createSequentialGroup()
                                                 .addGap(40, 40, 40)
                                                 .addComponent(radioMas)
                                                 .addGap(31, 31, 31)
@@ -154,14 +155,26 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
                                                     .addComponent(txtAm, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(txtNom, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(txtAp, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(txtNumEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                                    .addComponent(txtNumEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addGap(10, 10, 10)
+                                                .addComponent(jRadioButton2)
+                                                .addGap(19, 19, 19)))))
                                 .addGap(18, 18, 18)
                                 .addComponent(jRadioButton3))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(214, 214, 214)
-                        .addComponent(addBoton)
-                        .addGap(84, 84, 84)
-                        .addComponent(cancelBoton)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(214, 214, 214)
+                            .addComponent(addBoton)
+                            .addGap(84, 84, 84)
+                            .addComponent(cancelBoton))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(219, 219, 219)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jRadioButton1)
+                                .addComponent(radGeneral))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(radRecur))))
                 .addContainerGap(196, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -198,7 +211,11 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
                     .addComponent(jRadioButton1)
                     .addComponent(jRadioButton2)
                     .addComponent(jRadioButton3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(radGeneral)
+                    .addComponent(radRecur))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addBoton)
                     .addComponent(cancelBoton))
@@ -247,6 +264,8 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
     private com.toedter.calendar.JDateChooser jfeNac;
+    private javax.swing.JRadioButton radGeneral;
+    private javax.swing.JRadioButton radRecur;
     private javax.swing.JRadioButton radioFem;
     private javax.swing.JRadioButton radioMas;
     private javax.swing.JTextField txtAm;
