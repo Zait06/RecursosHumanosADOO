@@ -2,8 +2,7 @@ package recursoshumanos;
 
 import com.mysql.jdbc.Connection;
 import java.awt.*;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 import javax.swing.*;
 import javax.swing.JOptionPane;
 
@@ -128,18 +127,29 @@ public class inicioRecursos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEntrarActionPerformed
+        String us=txtUsuario.getText(),pass=txtContra.getText();
+        boolean si_es=false;
         try
         {
             /*
                 Creacion de la conexión a la base de datos
                 Es mi DiverManager.getConnection(urlBaseDeDatos,usuario,contraseña)
             */
-            Connection con;
-            con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306","root","quetzal");
-        }catch(SQLException ex){}
+            Connection con=(Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306","root","quetzal");
+            // Creación de instancia
+            Statement stant=con.createStatement();
+            //Ejecutar sql
+            ResultSet resul=stant.executeQuery("select * from RECUROS_HUMANOS");
+            //Verificar resultados
+            while(resul.next())
+            {
+                if(resul.getString("usuario").equals(us) && resul.getString("contra").equals(pass))
+                {si_es=true;break;}
+            }
+        }catch(SQLException ex){JOptionPane.showMessageDialog(this,"Algo salió mal :c","ERROR",JOptionPane.WARNING_MESSAGE);}
         
-        String us=txtUsuario.getText(),pass=txtContra.getText();
-        if(us.equals("Zaito") && pass.equals("quetzal"))
+        
+        if(si_es)
         {
             JOptionPane.showMessageDialog(this,"A ingresado "+us,"BIENVENIDO",JOptionPane.INFORMATION_MESSAGE);
             inicioDes des=new inicioDes(us);
