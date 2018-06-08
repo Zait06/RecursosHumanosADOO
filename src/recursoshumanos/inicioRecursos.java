@@ -127,7 +127,7 @@ public class inicioRecursos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEntrarActionPerformed
-        String us=txtUsuario.getText(),pass=txtContra.getText();
+        String us=txtUsuario.getText(),pass=txtContra.getText(),numEmp="";
         boolean si_es=false;
         try
         {
@@ -135,32 +135,38 @@ public class inicioRecursos extends javax.swing.JFrame {
                 Creacion de la conexión a la base de datos
                 Es mi DiverManager.getConnection(urlBaseDeDatos,usuario,contraseña)
             */
-            Connection con=(Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306","root","quetzal");
+            Connection con;
+            con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/sae","root","quetzal");
             // Creación de instancia
             Statement stant=con.createStatement();
             //Ejecutar sql
-            ResultSet resul=stant.executeQuery("select * from RECUROS_HUMANOS");
+            ResultSet resul=stant.executeQuery("select * from RECURSOS_HUMANOS");
             //Verificar resultados
             while(resul.next())
             {
                 if(resul.getString("usuario").equals(us) && resul.getString("contra").equals(pass))
-                {si_es=true;break;}
+                {si_es=true;numEmp=resul.getString("noEmp");break;}
             }
-        }catch(SQLException ex){JOptionPane.showMessageDialog(this,"Algo salió mal :c","ERROR",JOptionPane.WARNING_MESSAGE);}
-        
-        
-        if(si_es)
-        {
-            JOptionPane.showMessageDialog(this,"A ingresado "+us,"BIENVENIDO",JOptionPane.INFORMATION_MESSAGE);
-            inicioDes des=new inicioDes(us);
-            des.setVisible(true);
-            this.setVisible(false);
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(this,"Usuario o contraseña incorrecta","ERROR",JOptionPane.WARNING_MESSAGE);
-            txtUsuario.setText("");txtContra.setText("");
-        }
+            resul=stant.executeQuery("select * from EMPLEADO");
+            while(resul.next())
+            {
+                if(resul.getString("noEmp").equals(numEmp))
+                {us=resul.getString("nomEmp");break;}
+            }
+             if(si_es)
+            {
+                JOptionPane.showMessageDialog(this,"A ingresado "+us,"BIENVENIDO",JOptionPane.INFORMATION_MESSAGE);
+                inicioDes des=new inicioDes(us);
+                des.setVisible(true);
+                this.setVisible(false);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(this,"Usuario o contraseña incorrecta","ERROR",JOptionPane.WARNING_MESSAGE);
+                txtUsuario.setText("");txtContra.setText("");
+            }
+        }catch(SQLException ex)
+        {JOptionPane.showMessageDialog(null,"Algo salió mal :c");}
     }//GEN-LAST:event_botonEntrarActionPerformed
 
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
