@@ -136,18 +136,21 @@ public class inicioDes extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        //Abrir la ventana de Agregar empleado
         agregarEmpleado empnew=new agregarEmpleado();
         escritorioPanel.add(empnew);
         empnew.show();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        //Abrir la ventana de la LIsta de los empleados
         listaEmpleados listEmp=new listaEmpleados();
         escritorioPanel.add(listEmp);
         listEmp.show();
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        //Abrir ventana de generar reporte del empleado
         reporteEmp r=new reporteEmp();
         escritorioPanel.add(r);
         r.show();
