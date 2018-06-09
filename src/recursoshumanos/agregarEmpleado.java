@@ -9,13 +9,16 @@ package recursoshumanos;
  *
  * @author Zait
  */
+
 public class agregarEmpleado extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form agregarEmpleado
      */
+    
     public agregarEmpleado() {
         initComponents();
+        
     }
 
     /**
@@ -27,6 +30,8 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        sexo = new javax.swing.ButtonGroup();
+        turno = new javax.swing.ButtonGroup();
         txtAp = new javax.swing.JTextField();
         txtAm = new javax.swing.JTextField();
         txtNom = new javax.swing.JTextField();
@@ -49,178 +54,132 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
         radGeneral = new javax.swing.JRadioButton();
         radRecur = new javax.swing.JRadioButton();
 
+        setBackground(new java.awt.Color(136, 200, 246));
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setTitle("Nuevo empleado");
         setToolTipText("");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        txtAp.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtAp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtApActionPerformed(evt);
             }
         });
+        getContentPane().add(txtAp, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 66, 106, -1));
 
+        txtAm.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        getContentPane().add(txtAm, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 104, 106, -1));
+
+        txtNom.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        getContentPane().add(txtNom, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 142, 106, -1));
+
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel1.setText("Apellido paterno");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 69, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel2.setText("Apellido materno");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 107, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel3.setText("Nombre(s)");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 145, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel4.setText("Sexo");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 186, -1, -1));
 
+        radioMas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         radioMas.setText("Masculino");
+        radioMas.setOpaque(false);
         radioMas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 radioMasActionPerformed(evt);
             }
         });
+        getContentPane().add(radioMas, new org.netbeans.lib.awtextra.AbsoluteConstraints(236, 182, -1, -1));
 
+        radioFem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         radioFem.setText("Femenino");
+        radioFem.setOpaque(false);
+        getContentPane().add(radioFem, new org.netbeans.lib.awtextra.AbsoluteConstraints(338, 182, -1, -1));
 
+        txtNumEmp.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtNumEmp.setText("00000");
         txtNumEmp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNumEmpActionPerformed(evt);
             }
         });
+        getContentPane().add(txtNumEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 28, 106, -1));
 
+        jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel5.setText("Número de empleado");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 31, -1, -1));
 
+        jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel6.setText("Turno");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 279, -1, -1));
 
+        jRadioButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jRadioButton1.setText("Matutino");
+        jRadioButton1.setOpaque(false);
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(219, 275, -1, -1));
 
+        jRadioButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jRadioButton2.setText("Vespertino");
+        jRadioButton2.setOpaque(false);
+        getContentPane().add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(313, 275, -1, -1));
 
+        jRadioButton3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jRadioButton3.setText("Mixto");
+        jRadioButton3.setOpaque(false);
+        getContentPane().add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(427, 275, -1, -1));
 
+        jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel7.setText("Fecha de nacimiento");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 229, -1, -1));
+        getContentPane().add(jfeNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 161, -1));
 
+        addBoton.setBackground(new java.awt.Color(0, 0, 153));
+        addBoton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         addBoton.setText("Agregar");
+        addBoton.setOpaque(false);
         addBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addBotonActionPerformed(evt);
             }
         });
+        getContentPane().add(addBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 374, -1, -1));
 
+        cancelBoton.setBackground(new java.awt.Color(255, 51, 0));
+        cancelBoton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cancelBoton.setText("Cancelar");
+        cancelBoton.setOpaque(false);
         cancelBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelBotonActionPerformed(evt);
             }
         });
+        getContentPane().add(cancelBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(369, 374, -1, -1));
 
+        radGeneral.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         radGeneral.setText("General");
+        radGeneral.setOpaque(false);
+        getContentPane().add(radGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 316, -1, -1));
 
+        radRecur.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         radRecur.setText("Recursos Humanos");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(95, 95, 95)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(73, 73, 73)
-                                .addComponent(jfeNac, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel1)
-                                            .addComponent(jLabel2)
-                                            .addComponent(jLabel3)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel5))
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(40, 40, 40)
-                                                .addComponent(radioMas)
-                                                .addGap(31, 31, 31)
-                                                .addComponent(radioFem))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(74, 74, 74)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(txtAm, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(txtNom, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(txtAp, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(txtNumEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addGap(10, 10, 10)
-                                                .addComponent(jRadioButton2)
-                                                .addGap(19, 19, 19)))))
-                                .addGap(18, 18, 18)
-                                .addComponent(jRadioButton3))))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(214, 214, 214)
-                            .addComponent(addBoton)
-                            .addGap(84, 84, 84)
-                            .addComponent(cancelBoton))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(219, 219, 219)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jRadioButton1)
-                                .addComponent(radGeneral))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(radRecur))))
-                .addContainerGap(196, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNumEmp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtAp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtAm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(radioMas)
-                    .addComponent(radioFem))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel7)
-                    .addComponent(jfeNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton3))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(radGeneral)
-                    .addComponent(radRecur))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addBoton)
-                    .addComponent(cancelBoton))
-                .addGap(37, 37, 37))
-        );
+        radRecur.setOpaque(false);
+        getContentPane().add(radRecur, new org.netbeans.lib.awtextra.AbsoluteConstraints(327, 316, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -268,6 +227,8 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton radRecur;
     private javax.swing.JRadioButton radioFem;
     private javax.swing.JRadioButton radioMas;
+    private javax.swing.ButtonGroup sexo;
+    private javax.swing.ButtonGroup turno;
     private javax.swing.JTextField txtAm;
     private javax.swing.JTextField txtAp;
     private javax.swing.JTextField txtNom;
