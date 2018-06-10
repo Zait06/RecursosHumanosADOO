@@ -5,6 +5,8 @@
  */
 package recursoshumanos;
 
+
+
 /**
  *
  * @author Zait
@@ -18,7 +20,6 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
     
     public agregarEmpleado() {
         initComponents();
-        
     }
 
     /**
@@ -60,6 +61,7 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setTitle("Nuevo empleado");
         setToolTipText("");
+        setName(""); // NOI18N
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtAp.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -149,10 +151,9 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 229, -1, -1));
         getContentPane().add(jfeNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 161, -1));
 
-        addBoton.setBackground(new java.awt.Color(0, 0, 153));
+        addBoton.setBackground(new java.awt.Color(255, 255, 255));
         addBoton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         addBoton.setText("Agregar");
-        addBoton.setOpaque(false);
         addBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addBotonActionPerformed(evt);
@@ -160,10 +161,9 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
         });
         getContentPane().add(addBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 374, -1, -1));
 
-        cancelBoton.setBackground(new java.awt.Color(255, 51, 0));
+        cancelBoton.setBackground(new java.awt.Color(255, 255, 255));
         cancelBoton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cancelBoton.setText("Cancelar");
-        cancelBoton.setOpaque(false);
         cancelBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelBotonActionPerformed(evt);
@@ -205,7 +205,7 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_addBotonActionPerformed
 
     private void cancelBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBotonActionPerformed
-        System.exit(0);
+        this.setVisible(false);
     }//GEN-LAST:event_cancelBotonActionPerformed
 
     
@@ -234,4 +234,8 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtNom;
     private javax.swing.JTextField txtNumEmp;
     // End of variables declaration//GEN-END:variables
+
+    private void setExtendedState(int MAXIMIZED_BOTH) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
