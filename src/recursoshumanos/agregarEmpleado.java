@@ -5,6 +5,11 @@
  */
 package recursoshumanos;
 
+import javax.swing.JOptionPane;
+import java.sql.*;
+import com.mysql.jdbc.Connection;
+import java.util.Random;
+import java.util.Calendar;
 
 
 /**
@@ -20,6 +25,15 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
     
     public agregarEmpleado() {
         initComponents();
+        int i=aleatorio();
+        txtNumEmp.setText(""+i);
+    }
+    
+    public int aleatorio()
+    {
+        Random rad=new Random();
+        int i=9999+rad.nextInt(10000);
+        return i;
     }
 
     /**
@@ -33,6 +47,7 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
 
         sexo = new javax.swing.ButtonGroup();
         turno = new javax.swing.ButtonGroup();
+        tipoEmp = new javax.swing.ButtonGroup();
         txtAp = new javax.swing.JTextField();
         txtAm = new javax.swing.JTextField();
         txtNom = new javax.swing.JTextField();
@@ -45,15 +60,18 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
         txtNumEmp = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        radioMat = new javax.swing.JRadioButton();
+        radioVes = new javax.swing.JRadioButton();
+        radioMix = new javax.swing.JRadioButton();
         jLabel7 = new javax.swing.JLabel();
         jfeNac = new com.toedter.calendar.JDateChooser();
         addBoton = new javax.swing.JButton();
         cancelBoton = new javax.swing.JButton();
         radGeneral = new javax.swing.JRadioButton();
         radRecur = new javax.swing.JRadioButton();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        txtNumTajeta = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(136, 200, 246));
         setClosable(true);
@@ -70,30 +88,31 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
                 txtApActionPerformed(evt);
             }
         });
-        getContentPane().add(txtAp, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 66, 106, -1));
+        getContentPane().add(txtAp, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 106, -1));
 
         txtAm.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        getContentPane().add(txtAm, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 104, 106, -1));
+        getContentPane().add(txtAm, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 106, -1));
 
         txtNom.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        getContentPane().add(txtNom, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 142, 106, -1));
+        getContentPane().add(txtNom, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, 106, -1));
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel1.setText("Apellido paterno");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 69, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel2.setText("Apellido materno");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 107, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel3.setText("Nombre(s)");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 145, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel4.setText("Sexo");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 186, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, -1, -1));
 
+        sexo.add(radioMas);
         radioMas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         radioMas.setText("Masculino");
         radioMas.setOpaque(false);
@@ -102,12 +121,13 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
                 radioMasActionPerformed(evt);
             }
         });
-        getContentPane().add(radioMas, new org.netbeans.lib.awtextra.AbsoluteConstraints(236, 182, -1, -1));
+        getContentPane().add(radioMas, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, -1, -1));
 
+        sexo.add(radioFem);
         radioFem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         radioFem.setText("Femenino");
         radioFem.setOpaque(false);
-        getContentPane().add(radioFem, new org.netbeans.lib.awtextra.AbsoluteConstraints(338, 182, -1, -1));
+        getContentPane().add(radioFem, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, -1, -1));
 
         txtNumEmp.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtNumEmp.setText("00000");
@@ -116,40 +136,43 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
                 txtNumEmpActionPerformed(evt);
             }
         });
-        getContentPane().add(txtNumEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 28, 106, -1));
+        getContentPane().add(txtNumEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 106, -1));
 
         jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel5.setText("Número de empleado");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 31, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel6.setText("Turno");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 279, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 320, -1, -1));
 
-        jRadioButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jRadioButton1.setText("Matutino");
-        jRadioButton1.setOpaque(false);
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        turno.add(radioMat);
+        radioMat.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        radioMat.setText("Matutino");
+        radioMat.setOpaque(false);
+        radioMat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                radioMatActionPerformed(evt);
             }
         });
-        getContentPane().add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(219, 275, -1, -1));
+        getContentPane().add(radioMat, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 320, -1, -1));
 
-        jRadioButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jRadioButton2.setText("Vespertino");
-        jRadioButton2.setOpaque(false);
-        getContentPane().add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(313, 275, -1, -1));
+        turno.add(radioVes);
+        radioVes.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        radioVes.setText("Vespertino");
+        radioVes.setOpaque(false);
+        getContentPane().add(radioVes, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, -1, -1));
 
-        jRadioButton3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jRadioButton3.setText("Mixto");
-        jRadioButton3.setOpaque(false);
-        getContentPane().add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(427, 275, -1, -1));
+        turno.add(radioMix);
+        radioMix.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        radioMix.setText("Mixto");
+        radioMix.setOpaque(false);
+        getContentPane().add(radioMix, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 320, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel7.setText("Fecha de nacimiento");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 229, -1, -1));
-        getContentPane().add(jfeNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 161, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, -1, -1));
+        getContentPane().add(jfeNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, 161, -1));
 
         addBoton.setBackground(new java.awt.Color(255, 255, 255));
         addBoton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -159,7 +182,7 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
                 addBotonActionPerformed(evt);
             }
         });
-        getContentPane().add(addBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 374, -1, -1));
+        getContentPane().add(addBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 420, -1, -1));
 
         cancelBoton.setBackground(new java.awt.Color(255, 255, 255));
         cancelBoton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -169,17 +192,34 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
                 cancelBotonActionPerformed(evt);
             }
         });
-        getContentPane().add(cancelBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(369, 374, -1, -1));
+        getContentPane().add(cancelBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 420, -1, -1));
 
+        tipoEmp.add(radGeneral);
         radGeneral.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         radGeneral.setText("General");
         radGeneral.setOpaque(false);
-        getContentPane().add(radGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 316, -1, -1));
+        getContentPane().add(radGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 360, -1, -1));
 
+        tipoEmp.add(radRecur);
         radRecur.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         radRecur.setText("Recursos Humanos");
         radRecur.setOpaque(false);
-        getContentPane().add(radRecur, new org.netbeans.lib.awtextra.AbsoluteConstraints(327, 316, -1, -1));
+        getContentPane().add(radRecur, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 360, -1, -1));
+
+        jLabel8.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel8.setText("Tipo de Empleado");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, -1, -1));
+
+        jLabel9.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel9.setText("Número de tarjeta");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, 20));
+
+        txtNumTajeta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNumTajetaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtNumTajeta, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, 110, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -196,17 +236,98 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
         //Se hace un random para tener el número de empleado
     }//GEN-LAST:event_txtNumEmpActionPerformed
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void radioMatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioMatActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_radioMatActionPerformed
 
+    public String seleSexo()
+    {
+        String sex="";
+        if(radioFem.isSelected()){sex="Femenino";}
+        else if(radioMas.isSelected()){sex="Masculino";}
+        else{JOptionPane.showMessageDialog(this,"No selecciono una sexualidad","ERROR",JOptionPane.WARNING_MESSAGE);}
+        return sex;
+    }
+    
+    public String seleTurno()
+    {
+        String turno="";
+        if(radioMat.isSelected()){turno="Matutino";}
+        else if(radioMix.isSelected()){turno="Mixto";}
+        else if(radioVes.isSelected()){turno="Vespertino";}
+        else{JOptionPane.showMessageDialog(this,"No selecciono un turno de trabajo","ERROR",JOptionPane.WARNING_MESSAGE);}
+        return turno;
+    }
+    
+    public boolean seleEmp()
+    {
+        boolean emp=false;
+        if(radGeneral.isSelected()){emp=false;}
+        else if (radRecur.isSelected()){emp=true;}
+        else{JOptionPane.showMessageDialog(this,"No selecciono un tipo de trabajador","ERROR",JOptionPane.WARNING_MESSAGE);}
+        return emp;
+    }
+    
+    public String fechaNacimiento()
+    {
+        String f="",d,m,a;
+        d=Integer.toString(jfeNac.getCalendar().get(Calendar.DAY_OF_MONTH));
+        m=Integer.toString(jfeNac.getCalendar().get(Calendar.MONTH)+1);
+        a=Integer.toString(jfeNac.getCalendar().get(Calendar.YEAR));
+        f=a+"-"+m+"-"+d;
+        return f;
+    }
+    
     private void addBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBotonActionPerformed
-        // TODO add your handling code here:
+        String nom=txtNom.getText(),app=txtAp.getText(),apm=txtAm.getText();
+        String numEmp=txtNumEmp.getText();
+        int numTar=Integer.parseInt(txtNumTajeta.getText());
+        boolean emp=seleEmp();
+        String sex=seleSexo(),turno=seleTurno();
+        String instruc="",instruc1="";
+        String feNac=fechaNacimiento();
+        boolean seg=false;
+        try
+        {
+            Connection con;
+            con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/sae","root","quetzal");
+            // Creación de instancia
+            Statement stant=con.createStatement();
+            //Ejecutar sql
+            ResultSet resul=stant.executeQuery("select * from EMPLEADO");
+            while(resul.next())
+            {if(resul.getString("noEmp").equals(numEmp) || resul.getString("idTarjeta").equals(""+numTar)){seg=true;break;}}
+            if(seg)
+            {
+                int nuNum=aleatorio();
+                JOptionPane.showMessageDialog(this,"Número de empleado existente, el nuevmo número es: "+nuNum,"ERROR",JOptionPane.WARNING_MESSAGE);
+                txtNumEmp.setText(""+nuNum);
+            }
+            int numEmp1=Integer.parseInt(txtNumEmp.getText());
+            instruc="insert into EMPLEADO values("+numEmp1+",'"+app+"','"+apm+"','"+nom+"','"+sex+"','"+feNac+"','"+turno+"',"+numTar+")";
+            if(emp)
+            {
+                String us="",pass="";
+                instruc1="insert into RECURSOS_HUMANOS values("+numEmp1+",'"+us+"','"+pass+"')";
+            }
+            else{instruc1="insert into GENERAL values("+numEmp1+")";}
+            System.out.println("No está insertando:\n"+instruc+"\n"+instruc1);
+            stant.executeUpdate(instruc);
+            stant.executeUpdate(instruc1);
+            System.out.println("No está insertando:\n"+instruc+"\n"+instruc1);
+            JOptionPane.showMessageDialog(this,"Nuevo empleado registrado","REALIZADO",JOptionPane.INFORMATION_MESSAGE);
+            this.setVisible(false);
+        }
+        catch(Exception ex){JOptionPane.showMessageDialog(this,"Error al intentar agregar","ERROR",JOptionPane.WARNING_MESSAGE);};
     }//GEN-LAST:event_addBotonActionPerformed
 
     private void cancelBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBotonActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_cancelBotonActionPerformed
+
+    private void txtNumTajetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumTajetaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNumTajetaActionPerformed
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -219,20 +340,24 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private com.toedter.calendar.JDateChooser jfeNac;
     private javax.swing.JRadioButton radGeneral;
     private javax.swing.JRadioButton radRecur;
     private javax.swing.JRadioButton radioFem;
     private javax.swing.JRadioButton radioMas;
+    private javax.swing.JRadioButton radioMat;
+    private javax.swing.JRadioButton radioMix;
+    private javax.swing.JRadioButton radioVes;
     private javax.swing.ButtonGroup sexo;
+    private javax.swing.ButtonGroup tipoEmp;
     private javax.swing.ButtonGroup turno;
     private javax.swing.JTextField txtAm;
     private javax.swing.JTextField txtAp;
     private javax.swing.JTextField txtNom;
     private javax.swing.JTextField txtNumEmp;
+    private javax.swing.JTextField txtNumTajeta;
     // End of variables declaration//GEN-END:variables
 
     private void setExtendedState(int MAXIMIZED_BOTH) {
