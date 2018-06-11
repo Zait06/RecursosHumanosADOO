@@ -5,6 +5,10 @@
  */
 package recursoshumanos;
 
+import com.mysql.jdbc.Connection;
+import java.sql.*;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Zait
@@ -16,6 +20,7 @@ public class listaEmpleados extends javax.swing.JInternalFrame {
      */
     public listaEmpleados() {
         initComponents();
+        verEmpleado();
     }
 
     /**
@@ -41,13 +46,13 @@ public class listaEmpleados extends javax.swing.JInternalFrame {
         jTable1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "No. empleado", "Nombre", "Tipo", "Contrato vigente"
+
             }
         ));
+        jTable1.setCellSelectionEnabled(true);
         jTable1.setEnabled(false);
         jScrollPane1.setViewportView(jTable1);
 
@@ -75,6 +80,28 @@ public class listaEmpleados extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void verEmpleado()
+    {
+        String [] cabeza={"No. Empleado","Numero de tarjeta","Nombre","Turno"};
+        DefaultTableModel m=new DefaultTableModel(null,cabeza);
+        int ca=0;
+        try
+        {
+            //Creación de la conexión a la base de datos
+            Connection con;
+            con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/sae","root","quetzal");
+            // Creación de instancia
+            Statement stant=con.createStatement();
+            //Ejecutar sql
+            ResultSet re=stant.executeQuery("select * from EMPLEADO");
+            while(re.next())
+            {
+                String [] empp={re.getString("noEmp"),re.getString("idTarjeta"),re.getString("nomEmp"),re.getString("turno")};
+                m.addRow(empp);
+            }
+            jTable1.setModel(m);
+        }catch(Exception ex){}
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

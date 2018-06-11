@@ -311,10 +311,8 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
                 instruc1="insert into RECURSOS_HUMANOS values("+numEmp1+",'"+us+"','"+pass+"')";
             }
             else{instruc1="insert into GENERAL values("+numEmp1+")";}
-            System.out.println("No está insertando:\n"+instruc+"\n"+instruc1);
             stant.executeUpdate(instruc);
             stant.executeUpdate(instruc1);
-            System.out.println("No está insertando:\n"+instruc+"\n"+instruc1);
             JOptionPane.showMessageDialog(this,"Nuevo empleado registrado","REALIZADO",JOptionPane.INFORMATION_MESSAGE);
             this.setVisible(false);
         }
