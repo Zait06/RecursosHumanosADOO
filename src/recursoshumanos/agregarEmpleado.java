@@ -8,8 +8,10 @@ package recursoshumanos;
 import javax.swing.JOptionPane;
 import java.sql.*;
 import com.mysql.jdbc.Connection;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Calendar;
+import javax.swing.table.DefaultTableModel;
 
 
 /**
@@ -27,6 +29,7 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
         initComponents();
         int i=aleatorio();
         txtNumEmp.setText(""+i);
+        TarjetaDisponible();
     }
     
     public int aleatorio()
@@ -72,11 +75,14 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         txtNumTajeta = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(136, 200, 246));
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
+        setResizable(true);
         setTitle("Nuevo empleado");
         setToolTipText("");
         setName(""); // NOI18N
@@ -221,6 +227,18 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
         });
         getContentPane().add(txtNumTajeta, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, 110, -1));
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 50, 180, 350));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -276,6 +294,40 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
         a=Integer.toString(jfeNac.getCalendar().get(Calendar.YEAR));
         f=a+"-"+m+"-"+d;
         return f;
+    }
+    
+    public void TarjetaDisponible()
+    {
+        String [] cabeza={"Tarjeta Disponible"};
+        DefaultTableModel m=new DefaultTableModel(null,cabeza);
+        int ca=0,i=0;
+        ArrayList<String> empp=new ArrayList<String>();
+        boolean hu;
+        try
+        {
+            //Creación de la conexión a la base de datos
+            Connection con;
+            con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/sae","root","quetzal");
+            // Creación de instancia
+            Statement stant=con.createStatement();
+            //Ejecutar sql
+            ResultSet re=stant.executeQuery("select * from EMPLEADO");
+            while(re.next())
+            {empp.add(re.getString("idTarjeta"));}
+            re=stant.executeQuery("select * from Tarjeta_NFC");
+            String []mos=new String[2]; 
+            while(re.next())
+            {
+                hu=true;
+                for(i=0;i<empp.size();i++)
+                {
+                    if(empp.get(i).equals(re.getString("idTarjeta"))){hu=false;break;}
+                }
+                if(hu){mos[0]=re.getString("idTarjeta");}
+                m.addRow(mos);
+            }
+            jTable1.setModel(m);
+        }catch(Exception ex){}
     }
     
     private void addBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBotonActionPerformed
@@ -340,6 +392,8 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private com.toedter.calendar.JDateChooser jfeNac;
     private javax.swing.JRadioButton radGeneral;
     private javax.swing.JRadioButton radRecur;
