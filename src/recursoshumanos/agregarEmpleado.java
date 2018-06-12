@@ -305,6 +305,7 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
         boolean hu;
         try
         {
+            String []yoyo=new String[50];
             //Creación de la conexión a la base de datos
             Connection con;
             con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/sae","root","quetzal");
@@ -313,15 +314,17 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
             //Ejecutar sql
             ResultSet re=stant.executeQuery("select * from EMPLEADO");
             while(re.next())
-            {empp.add(re.getString("idTarjeta"));}
+            {yoyo[i]=re.getString("idTarjeta");i++;}
+            //{empp.add(re.getString("idTarjeta"));}
             re=stant.executeQuery("select * from Tarjeta_NFC");
-            String []mos=new String[2]; 
+            String []mos=new String[2];
             while(re.next())
             {
                 hu=true;
                 for(i=0;i<empp.size();i++)
                 {
-                    if(empp.get(i).equals(re.getString("idTarjeta"))){hu=false;break;}
+                    if(yoyo[i].equals(re.getString("idTarjeta"))){hu=false;break;}
+                    //if(empp.get(i).equals(re.getString("idTarjeta"))){hu=false;break;}
                 }
                 if(hu){mos[0]=re.getString("idTarjeta");}
                 m.addRow(mos);
@@ -360,6 +363,9 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
             if(emp)
             {
                 String us="",pass="";
+                JOptionPane.showMessageDialog(this,"Por ser empleado de recursos humanos, es necesario un usuario y una contraseña",null,JOptionPane.INFORMATION_MESSAGE);
+                us=JOptionPane.showInputDialog(null,"Introduzca el nombre de usuario con el que ingresará");
+                pass=JOptionPane.showInputDialog(null,"Introduzca una contraseña");
                 instruc1="insert into RECURSOS_HUMANOS values("+numEmp1+",'"+us+"','"+pass+"')";
             }
             else{instruc1="insert into GENERAL values("+numEmp1+")";}

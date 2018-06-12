@@ -43,7 +43,7 @@ public class reporteEmp extends javax.swing.JInternalFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         txtRuta = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        botonURL = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(166, 208, 124));
         setClosable(true);
@@ -102,10 +102,10 @@ public class reporteEmp extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton1.setText("Buscar ruta");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonURL.setText("Buscar ruta");
+        botonURL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonURLActionPerformed(evt);
             }
         });
 
@@ -128,7 +128,7 @@ public class reporteEmp extends javax.swing.JInternalFrame {
                         .addGap(13, 13, 13)
                         .addComponent(txtRuta, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(83, 83, 83)
-                        .addComponent(jButton1)
+                        .addComponent(botonURL)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(botonGenerar, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))))
             .addComponent(jScrollPane2)
@@ -148,7 +148,7 @@ public class reporteEmp extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(botonGenerar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botonURL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtRuta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20))
         );
@@ -190,7 +190,7 @@ public class reporteEmp extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtRutaActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void botonURLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonURLActionPerformed
         JFileChooser dlg=new JFileChooser();
         int op=dlg.showSaveDialog(this);
         if(op==JFileChooser.APPROVE_OPTION)
@@ -198,13 +198,13 @@ public class reporteEmp extends javax.swing.JInternalFrame {
             File f=dlg.getSelectedFile();
             txtRuta.setText(f.toString());
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_botonURLActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonGenerar;
+    private javax.swing.JButton botonURL;
     private javax.swing.JButton buscarBoton;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane2;
