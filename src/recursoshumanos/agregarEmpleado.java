@@ -8,7 +8,6 @@ package recursoshumanos;
 import javax.swing.JOptionPane;
 import java.sql.*;
 import com.mysql.jdbc.Connection;
-import java.util.ArrayList;
 import java.util.Random;
 import java.util.Calendar;
 import javax.swing.table.DefaultTableModel;
@@ -302,7 +301,6 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
         String [] cabeza={"Tarjeta Disponible"};
         DefaultTableModel m=new DefaultTableModel(null,cabeza);
         int ca=0,i=0;
-        ArrayList<String> empp=new ArrayList<String>();
         boolean hu;
         try
         {
@@ -322,7 +320,7 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
             while(re.next())
             {
                 hu=true;
-                for(i=0;i<empp.size();i++)
+                for(i=0;i<yoyo.length;i++)
                 {
                     if(yoyo[i].equals(re.getString("idTarjeta"))){hu=false;break;}
                     //if(empp.get(i).equals(re.getString("idTarjeta"))){hu=false;break;}
