@@ -220,6 +220,7 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
         jLabel9.setText("Número de tarjeta");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, 20));
 
+        txtNumTajeta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtNumTajeta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNumTajetaActionPerformed(evt);

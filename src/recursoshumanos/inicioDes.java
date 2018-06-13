@@ -50,13 +50,14 @@ public class inicioDes extends javax.swing.JFrame {
         escritorioPanel.setLayout(escritorioPanelLayout);
         escritorioPanelLayout.setHorizontalGroup(
             escritorioPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 881, Short.MAX_VALUE)
         );
         escritorioPanelLayout.setVerticalGroup(
             escritorioPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 478, Short.MAX_VALUE)
         );
 
+        jLabel2.setFont(new java.awt.Font("Leelawadee", 1, 48)); // NOI18N
         jLabel2.setText("RECURSOS HUMANOS");
 
         jMenu1.setText("Empleado");
@@ -110,17 +111,17 @@ public class inicioDes extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(escritorioPanel)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(366, 366, 366)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-                .addContainerGap(374, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(158, 158, 158))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(7, 7, 7)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(escritorioPanel))
         );
 
