@@ -5,12 +5,18 @@
  */
 package recursoshumanos;
 
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 import com.mysql.jdbc.Connection;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -25,7 +31,10 @@ public class reporteEmp extends javax.swing.JInternalFrame {
     public reporteEmp() {
         initComponents();
     }
-
+    
+    String [][]ley= new String[50][3];
+    String idE="",nomE="";
+    int largo;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -178,17 +187,49 @@ public class reporteEmp extends javax.swing.JInternalFrame {
             Statement stant=con.createStatement();
             //Ejecutar sql
             ResultSet re=stant.executeQuery("select * from REGISTROS where noEmp="+nuu+"");
+            int i=0;
             while(re.next())
             {
                 String [] dat={re.getString("fechaReg"),re.getString("horEnt"),re.getString("horSal")};
+                ley[i][0]=re.getString("fechaReg");
+                ley[i][1]=re.getString("horEnt");
+                ley[i][2]=re.getString("horSal");
                 m.addRow(dat);
+                i++;
             }
+            largo=i;
             jTable1.setModel(m);
+            re=stant.executeQuery("select * from EMPLEADO where noEmp="+nuu+"");
+            while(re.next())
+            {nomE=re.getString("nomEmp")+" "+re.getString("appEmp")+" "+re.getString("apmEmp");}
+            idE=nuu+"";
         }catch(Exception ex){}
     }//GEN-LAST:event_buscarBotonActionPerformed
 
     private void botonGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGenerarActionPerformed
-        String ru=txtRuta.getText();             
+        String ru=txtRuta.getText();
+        String me;
+        try
+        {
+            FileOutputStream ar=new FileOutputStream(ru+".pdf");
+            Document doc=new Document();
+            PdfWriter.getInstance(doc,ar);
+            doc.open();
+            me="Número de empleado: "+idE;
+            doc.add(new Paragraph(me));
+            me="Nombre de empleado: "+nomE;
+            doc.add(new Paragraph(me));
+            me="FECHA         HORA DE ENTRADA     HORA DE SALIDA";
+            doc.add(new Paragraph(me));
+            for(int i=0;i<largo;i++)
+            {
+                me=ley[i][0]+"     "+ley[i][1]+"         "+ley[i][2];
+                doc.add(new Paragraph(me));
+            }
+            doc.close();
+            JOptionPane.showMessageDialog(this,"Reporte generado","PDF creado",JOptionPane.INFORMATION_MESSAGE);
+            this.setVisible(false);
+        }catch(Exception ex){System.out.print(ex);}
     }//GEN-LAST:event_botonGenerarActionPerformed
 
     private void txtRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRutaActionPerformed
