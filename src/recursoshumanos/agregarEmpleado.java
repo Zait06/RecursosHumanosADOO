@@ -309,7 +309,7 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
             String []yoyo=new String[50];
             //Creación de la conexión a la base de datos
             Connection con;
-            con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/sae","root","quetzal");
+            con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/sae","root","");
             // Creación de instancia
             Statement stant=con.createStatement();
             //Ejecutar sql
@@ -345,7 +345,7 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
         try
         {
             Connection con;
-            con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/sae","root","quetzal");
+            con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/sae","root","");
             // Creación de instancia
             Statement stant=con.createStatement();
             //Ejecutar sql
@@ -363,6 +363,7 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
             if(emp)
             {
                 String us="",pass="";
+                //Solicita nombre y usuario al empleado si es de recursos humanos
                 JOptionPane.showMessageDialog(this,"Por ser empleado de recursos humanos, es necesario un usuario y una contraseña",null,JOptionPane.INFORMATION_MESSAGE);
                 us=JOptionPane.showInputDialog(null,"Introduzca el nombre de usuario con el que ingresará");
                 pass=JOptionPane.showInputDialog(null,"Introduzca una contraseña");

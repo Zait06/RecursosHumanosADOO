@@ -87,7 +87,7 @@ public class listaEmpleados extends javax.swing.JInternalFrame {
         {
             //Creación de la conexión a la base de datos
             Connection con;
-            con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/sae","root","quetzal");
+            con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/sae","root","");
             // Creación de instancia
             Statement stant=con.createStatement();
             //Ejecutar sql

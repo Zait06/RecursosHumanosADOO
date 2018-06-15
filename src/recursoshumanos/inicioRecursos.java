@@ -112,7 +112,7 @@ public class inicioRecursos extends javax.swing.JFrame {
                 Es mi DiverManager.getConnection(urlBaseDeDatos,usuario,contraseña)
             */
             Connection con;
-            con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/sae","root","quetzal");
+            con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/sae","root","");
             // Creación de instancia
             Statement stant=con.createStatement();
             //Ejecutar sql
