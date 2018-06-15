@@ -34,7 +34,7 @@ public class reporteEmp extends javax.swing.JInternalFrame {
     
     String [][]ley= new String[50][3];
     String idE="",nomE="";
-    int largo;
+    int largo=0;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -175,6 +175,8 @@ public class reporteEmp extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtNumEmpActionPerformed
 
     private void buscarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBotonActionPerformed
+        for(int j=0;j<largo;j++)
+        {ley[j][0]="";ley[j][1]="";ley[j][2]="";}
         int nuu=Integer.parseInt(txtNumEmp.getText());
         String [] cabeza={"Fecha","Hora de Entrada","Hora de Salida"};
         DefaultTableModel m=new DefaultTableModel(null,cabeza);
@@ -188,21 +190,22 @@ public class reporteEmp extends javax.swing.JInternalFrame {
             //Ejecutar sql
             ResultSet re=stant.executeQuery("select * from REGISTROS where noEmp="+nuu+"");
             int i=0;
-            while(re.next())
-            {
-                String [] dat={re.getString("fechaReg"),re.getString("horEnt"),re.getString("horSal")};
-                ley[i][0]=re.getString("fechaReg");
-                ley[i][1]=re.getString("horEnt");
-                ley[i][2]=re.getString("horSal");
-                m.addRow(dat);
-                i++;
-            }
-            largo=i;
-            jTable1.setModel(m);
-            re=stant.executeQuery("select * from EMPLEADO where noEmp="+nuu+"");
-            while(re.next())
-            {nomE=re.getString("nomEmp")+" "+re.getString("appEmp")+" "+re.getString("apmEmp");}
-            idE=nuu+"";
+                while(re.next())
+                {
+                    String [] dat={re.getString("fechaReg"),re.getString("horEnt"),re.getString("horSal")};
+                    ley[i][0]=re.getString("fechaReg");
+                    ley[i][1]=re.getString("horEnt");
+                    ley[i][2]=re.getString("horSal");
+                    m.addRow(dat);
+                    i++;
+                }
+            if(i>0){largo=i;
+                jTable1.setModel(m);
+                re=stant.executeQuery("select * from EMPLEADO where noEmp="+nuu+"");
+                while(re.next())
+                {nomE=re.getString("nomEmp")+" "+re.getString("appEmp")+" "+re.getString("apmEmp");}
+                idE=nuu+"";}
+            else{JOptionPane.showMessageDialog(this,"Empleado no existente","ERROR",JOptionPane.INFORMATION_MESSAGE);txtNumEmp.setText("");}
         }catch(Exception ex){}
     }//GEN-LAST:event_buscarBotonActionPerformed
 
