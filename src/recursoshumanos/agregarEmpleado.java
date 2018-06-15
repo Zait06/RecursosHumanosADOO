@@ -10,6 +10,7 @@ import java.sql.*;
 import com.mysql.jdbc.Connection;
 import java.util.Random;
 import java.util.Calendar;
+import java.util.LinkedList;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -26,9 +27,9 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
     
     public agregarEmpleado() {
         initComponents();
+        TarjetaDisponible();
         int i=aleatorio();
         txtNumEmp.setText(""+i);
-        TarjetaDisponible();
     }
     
     public int aleatorio()
@@ -301,6 +302,7 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
         String [] cabeza={"Tarjeta Disponible"};
         DefaultTableModel m=new DefaultTableModel(null,cabeza);
         int ca=0,i=0;
+        LinkedList ppp=new LinkedList();
         boolean hu;
         try
         {
@@ -313,20 +315,19 @@ public class agregarEmpleado extends javax.swing.JInternalFrame {
             //Ejecutar sql
             ResultSet re=stant.executeQuery("select * from EMPLEADO");
             while(re.next())
-            {yoyo[i]=re.getString("idTarjeta");i++;}
+            {yoyo[i]=re.getString("idTarjeta");ppp.add(re.getString("idTarjeta"));i++;}
             //{empp.add(re.getString("idTarjeta"));}
             re=stant.executeQuery("select * from Tarjeta_NFC");
             String []mos=new String[2];
             while(re.next())
             {
                 hu=true;
-                for(i=0;i<yoyo.length;i++)
+                for(i=0;i<ppp.size();i++)
                 {
                     if(yoyo[i].equals(re.getString("idTarjeta"))){hu=false;break;}
                     //if(empp.get(i).equals(re.getString("idTarjeta"))){hu=false;break;}
                 }
-                if(hu){mos[0]=re.getString("idTarjeta");}
-                m.addRow(mos);
+                if(hu){mos[0]=re.getString("idTarjeta");m.addRow(mos);}
             }
             jTable1.setModel(m);
         }catch(Exception ex){}

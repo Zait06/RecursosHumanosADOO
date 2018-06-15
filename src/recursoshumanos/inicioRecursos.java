@@ -84,7 +84,7 @@ public class inicioRecursos extends javax.swing.JFrame {
         });
         getContentPane().add(exitBot, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, 119, -1));
 
-        jPanel1.setBackground(new java.awt.Color(255, 204, 255));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 102));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
